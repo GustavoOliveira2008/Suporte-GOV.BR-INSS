@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Guia Brasil - ajuda com sites do governo</title>
+    <meta
+      name="description"
+      content="Converse com um assistente que explica, do jeito mais simples possível, como resolver problemas em sites e aplicativos do governo brasileiro."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- Ícones: reaproveitados via <use>, assim não repetem no código -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none" aria-hidden="true">
+      <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3 5 5.8v5.4c0 4.4 3 8.2 7 9.4 4-1.2 7-5 7-9.4V5.8z" />
+        <path d="M9 12l2.2 2.2L15.5 10" />
+      </symbol>
+      <symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="2.5" width="6" height="11" rx="3" />
+        <path d="M5.5 11a6.5 6.5 0 0 0 13 0" />
+        <path d="M12 17.5V21" />
+        <path d="M8.5 21h7" />
+      </symbol>
+      <symbol id="i-stop" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+        <rect x="6" y="6" width="12" height="12" rx="2.5" />
+      </symbol>
+      <symbol id="i-speaker" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 9.5h3.5L12 5.5v13L7.5 14.5H4z" />
+        <path d="M15.5 9a4 4 0 0 1 0 6" />
+        <path d="M18.5 6.5a7.5 7.5 0 0 1 0 11" />
+      </symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="8.5" y="8.5" width="12" height="12" rx="2.5" />
+        <path d="M15.5 5.5v-1a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h1" />
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4.5 12.5 9.5 17.5 19.5 7" />
+      </symbol>
+      <symbol id="i-print" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 9V3.5h10V9" />
+        <rect x="3.5" y="9" width="17" height="7.5" rx="2" />
+        <path d="M7 14h10v6.5H7z" />
+      </symbol>
+      <symbol id="i-new-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.5 12a8.5 8.5 0 0 1-8.5 8.5c-1.3 0-2.6-.3-3.7-.8L4 21l1.3-4.3A8.5 8.5 0 1 1 20.5 12Z" />
+        <path d="M12 8.5v7" />
+        <path d="M8.5 12h7" />
+      </symbol>
+      <symbol id="i-text-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 7V5h16v2" />
+        <path d="M12 5v14" />
+        <path d="M9 19h6" />
+      </symbol>
+      <symbol id="i-text-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 7V5h16v2" />
+        <path d="M12 5v14" />
+        <path d="M9 19h6" />
+        <path d="M19 12h4" />
+        <path d="M21 10v4" />
+      </symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7.5v5.5" />
+        <path d="M12 16.3h.01" />
+      </symbol>
+      <symbol id="i-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 3.5 13.8 9l5.7 1.8-5.7 1.8L12 18.5l-1.8-5.9L4.5 10.8 10.2 9z" />
+        <path d="M18.5 3.5v3" />
+        <path d="M17 5h3" />
+      </symbol>
+      <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4.5 12h6" />
+        <path d="M4.5 12 9 7.5" />
+        <path d="M4.5 12 9 16.5" />
+        <path d="M20.5 12c0 4.7-3.8 8.5-8.5 8.5-1.3 0-2.6-.3-3.7-.8L4 21l1.3-4.3A8.5 8.5 0 1 1 20.5 12Z" />
+      </symbol>
+      <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 4.5h5.5V10" />
+        <path d="M19.5 4.5 11 13" />
+        <path d="M18 14.5v4a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 18.5V7A1.5 1.5 0 0 1 5 5.5h4" />
+      </symbol>
+    </svg>
+
+    <div class="pagina">
+      <header class="cabecalho oculto-na-impressao">
+        <div class="cabecalho__conteudo">
+          <div class="marca">
+            <span class="marca__simbolo">
+              <svg width="24" height="24"><use href="#i-shield" /></svg>
+            </span>
+            <div>
+              <p class="marca__nome">Guia Brasil</p>
+              <p class="marca__sub">Ajuda com sites do governo</p>
+            </div>
+          </div>
+
+          <div class="cabecalho__acoes">
+            <div class="tamanho-texto" role="group" aria-label="Tamanho das letras da tela">
+              <button type="button" id="btn-texto-menos" aria-label="Diminuir as letras">
+                <svg width="20" height="20"><use href="#i-text-minus" /></svg>
+              </button>
+              <span class="tamanho-texto__valor" id="valor-texto">100%</span>
+              <button type="button" id="btn-texto-mais" aria-label="Aumentar as letras">
+                <svg width="20" height="20"><use href="#i-text-plus" /></svg>
+              </button>
+            </div>
+
+            <button type="button" class="botao" id="btn-nova" hidden>
+              <svg width="20" height="20"><use href="#i-new-chat" /></svg>
+              <span class="esconde-pequeno">Nova conversa</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div class="faixa faixa--demo oculto-na-impressao" id="faixa" hidden></div>
+
+      <main class="conversa" id="conversa" aria-label="Conversa">
+        <div class="conversa__conteudo" id="conteudo">
+          <!-- Tela inicial: fica no HTML para aparecer na hora, sem esperar o script -->
+          <section class="boas-vindas" id="boas-vindas">
+            <div class="boas-vindas__topo">
+              <span class="selo">
+                <svg width="16" height="16"><use href="#i-sparkle" /></svg>
+                Auxílio gratuito
+              </span>
+
+              <h1>Olá! Eu sou o <span>Guia Brasil</span>.</h1>
+
+              <p class="boas-vindas__lead">
+                Conte para mim o que está dando problema. Eu explico, um passo de cada vez, do
+                jeito mais simples possível.
+              </p>
+            </div>
+
+            <div>
+              <h2 class="secao__titulo">Toque em um exemplo para começar</h2>
+              <ul class="exemplos" id="exemplos"></ul>
+            </div>
+
+            <section class="cuidados">
+              <h2>
+                <svg width="22" height="22"><use href="#i-shield" /></svg>
+                Cuide dos seus dados
+              </h2>
+              <p>
+                Nunca envie sua senha, cartão, código de verificação ou dados de banco para
+                nenhum chat, nem para o Guia Brasil. O único site oficial do governo é o que
+                começa com <strong>www.gov.br</strong>.
+              </p>
+            </section>
+          </section>
+
+          <div class="fila" id="fila" hidden></div>
+        </div>
+      </main>
+
+      <div class="erro-caixa oculto-na-impressao" id="caixa-erro" hidden>
+        <div class="erro" role="alert">
+          <svg width="24" height="24"><use href="#i-alert" /></svg>
+          <div>
+            <p id="erro-texto"></p>
+            <p>Não precisa ter medo. Tente escrever sua mensagem mais uma vez.</p>
+          </div>
+        </div>
+      </div>
+
+      <footer class="rodape oculto-na-impressao">
+        <div class="rodape__conteudo">
+          <form class="formulario" id="formulario" autocomplete="off">
+            <label for="mensagem" class="oculto-visual">Escreva aqui o seu problema</label>
+            <textarea
+              class="campo"
+              id="mensagem"
+              rows="1"
+              placeholder="Escreva aqui o seu problema..."
+            ></textarea>
+
+            <button
+              type="button"
+              class="botao botao--grande"
+              id="btn-mic"
+              aria-label="Falar o seu problema em vez de escrever"
+              hidden
+            >
+              <svg width="24" height="24"><use href="#i-mic" /></svg>
+            </button>
+
+            <button type="submit" class="botao botao--grande botao--primario" id="btn-enviar" aria-label="Enviar mensagem" disabled>
+              <svg width="24" height="24"><use href="#i-send" /></svg>
+            </button>
+          </form>
+
+          <p class="rodape__aviso">
+            Nunca digite sua senha, cartão ou código de verificação aqui.
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Scripts clássicos (sem módulos) para o index.html abrir por duplo clique -->
+    <script src="respostas-demo.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

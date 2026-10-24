@@ -1,0 +1,842 @@
+/* ==========================================================================
+   Guia Brasil - folha de estilo única
+   Pensada para leitura confortável: base 18px, alto contraste, alvos grandes.
+   ========================================================================== */
+
+/* ---------- 1. Tokens ---------- */
+
+:root {
+  --brand-50: #eff5ff;
+  --brand-100: #dbe8fe;
+  --brand-200: #bfd7fe;
+  --brand-300: #93bbfd;
+  --brand-400: #609afa;
+  --brand-500: #3b7df6;
+  --brand-600: #1f62ee;
+  --brand-700: #1749c4;
+  --brand-800: #193d9c;
+  --brand-900: #1a357a;
+
+  --ink-50: #f6f7f9;
+  --ink-100: #eceef2;
+  --ink-200: #d5dae3;
+  --ink-300: #b1bacb;
+  --ink-400: #8692a8;
+  --ink-500: #67748c;
+  --ink-600: #515c73;
+  --ink-700: #434c5f;
+  --ink-800: #39404f;
+  --ink-900: #1f2430;
+
+  --help-50: #eefbf4;
+  --help-100: #d5f5e3;
+  --help-200: #aeeacb;
+  --help-600: #0b8149;
+  --help-700: #0a673c;
+
+  --warn-50: #fff8ed;
+  --warn-100: #ffeccc;
+  --warn-700: #9a4a06;
+
+  --danger-50: #fef2f2;
+  --danger-100: #fee2e2;
+  --danger-500: #dc2626;
+  --danger-700: #a41c1c;
+
+  --raio: 1.1rem;
+  --raio-p: 0.65rem;
+  --borda: 2px solid var(--ink-200);
+
+  /* Ajustado pelos botões de tamanho de letra (85% a 160%) */
+  --escala: 1;
+  --fonte-base: calc(18px * var(--escala));
+
+  color-scheme: light;
+}
+
+/* ---------- 2. Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--fonte-base);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ink-50);
+  color: var(--ink-900);
+  font-family: "Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Foco bem visível, essencial para quem navega por teclado */
+:focus-visible {
+  outline: 4px solid var(--brand-600);
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+}
+
+/* O atributo hidden precisa vencer o display das classes utilitárias */
+[hidden] {
+  display: none !important;
+}
+
+::selection {
+  background: var(--brand-200);
+}
+
+.oculto-visual {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- 3. Estrutura da página ---------- */
+
+.pagina {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+}
+
+.cabecalho {
+  flex-shrink: 0;
+  background: #fff;
+  border-bottom: var(--borda);
+}
+
+.cabecalho__conteudo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.marca__simbolo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--raio);
+  background: var(--brand-600);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.marca__nome {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.marca__sub {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--ink-500);
+}
+
+.cabecalho__acoes {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.faixa {
+  flex-shrink: 0;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.faixa--demo {
+  background: var(--warn-50);
+  border-bottom: 2px solid var(--warn-100);
+  color: var(--warn-700);
+}
+
+.faixa--demo code {
+  font-family: "Cascadia Code", Consolas, monospace;
+}
+
+.conversa {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink-300) transparent;
+}
+
+.conversa__conteudo {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+/* ---------- 4. Botões ---------- */
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.9rem;
+  border: var(--borda);
+  border-radius: var(--raio-p);
+  background: #fff;
+  color: var(--ink-700);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+}
+
+.botao:hover:not(:disabled) {
+  border-color: var(--brand-500);
+  color: var(--brand-700);
+}
+
+.botao:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.botao--grande {
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  border-radius: var(--raio);
+  flex-shrink: 0;
+}
+
+.botao--primario {
+  background: var(--brand-600);
+  border-color: var(--brand-600);
+  color: #fff;
+}
+
+.botao--primario:hover:not(:disabled) {
+  background: var(--brand-700);
+  border-color: var(--brand-700);
+  color: #fff;
+}
+
+.botao--primario:disabled {
+  background: var(--ink-200);
+  border-color: var(--ink-200);
+  color: var(--ink-400);
+  opacity: 1;
+}
+
+.botao--parar {
+  background: var(--danger-500);
+  border-color: var(--danger-500);
+  color: #fff;
+}
+
+.botao--parar:hover {
+  background: var(--danger-700);
+  border-color: var(--danger-700);
+  color: #fff;
+}
+
+.botao--mic-ativo {
+  background: var(--danger-500);
+  border-color: var(--danger-500);
+  color: #fff;
+  animation: pulsar 1.2s ease-in-out infinite;
+}
+
+@keyframes pulsar {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+.tamanho-texto {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.2rem;
+  background: #fff;
+  border: var(--borda);
+  border-radius: var(--raio);
+}
+
+.tamanho-texto button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: none;
+  border-radius: var(--raio-p);
+  background: transparent;
+  color: var(--ink-700);
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.tamanho-texto button:hover:not(:disabled) {
+  background: var(--brand-50);
+  color: var(--brand-700);
+}
+
+.tamanho-texto button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.tamanho-texto__valor {
+  min-width: 3.2rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--ink-600);
+}
+
+/* Rótulo que some em telas estreitas, deixando só o ícone */
+@media (max-width: 400px) {
+  .esconde-pequeno {
+    display: none;
+  }
+}
+
+/* ---------- 5. Tela inicial ---------- */
+
+.boas-vindas {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.boas-vindas__topo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: var(--brand-100);
+  color: var(--brand-800);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.boas-vindas h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+@media (min-width: 640px) {
+  .boas-vindas h1 { font-size: 2.25rem; }
+}
+
+.boas-vindas h1 span {
+  color: var(--brand-700);
+}
+
+.boas-vindas__lead {
+  margin: 0;
+  font-size: 1.125rem;
+  color: var(--ink-700);
+}
+
+.secao__titulo {
+  margin: 0 0 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ink-800);
+}
+
+.exemplos {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.exemplo {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--brand-200);
+  border-radius: var(--raio);
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(15 23 42 / 0.05);
+  color: var(--brand-800);
+  font: inherit;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.exemplo:hover {
+  border-color: var(--brand-500);
+  background: var(--brand-50);
+}
+
+.cuidados {
+  padding: 1.25rem;
+  border: 2px solid var(--help-200);
+  border-radius: var(--raio);
+  background: var(--help-50);
+}
+
+.cuidados h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--help-700);
+}
+
+.cuidados p {
+  margin: 0.5rem 0 0;
+  font-size: 1.125rem;
+  color: var(--help-700);
+}
+
+/* ---------- 6. Mensagens ---------- */
+
+.fila {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.fila__usuario {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bolha-usuario {
+  max-width: 85%;
+  margin: 0;
+  padding: 0.9rem 1.25rem;
+  border-radius: var(--raio) var(--raio) 0.25rem var(--raio);
+  background: var(--brand-600);
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.bolha-assistente {
+  padding: 1.25rem;
+  border: var(--borda);
+  border-radius: var(--raio) 0.25rem var(--raio) var(--raio);
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(15 23 42 / 0.05);
+}
+
+.pontos {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+}
+
+.pontos span {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  background: var(--brand-500);
+  animation: pular 1s ease-in-out infinite;
+}
+
+.pontos span:nth-child(2) { animation-delay: 0.15s; }
+.pontos span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes pular {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+  40% { transform: translateY(-0.4rem); opacity: 1; }
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 2px dashed var(--ink-200);
+}
+
+/* ---------- 7. Resposta em markdown (.guia) ---------- */
+
+.guia {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+
+.guia > * + * {
+  margin-top: 1.1rem;
+}
+
+.guia strong {
+  font-weight: 700;
+  color: var(--ink-900);
+  background: var(--brand-50);
+  border-radius: 0.3rem;
+  padding: 0.05em 0.3em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Seções: ## PASSO A PASSO, ## SE DER PROBLEMA, ... */
+.guia h2 {
+  margin-top: 2rem;
+  padding: 0.7rem 0 0.7rem 0.9rem;
+  border-left: 6px solid var(--brand-600);
+  border-radius: 0 var(--raio-p) var(--raio-p) 0;
+  background: linear-gradient(90deg, var(--brand-50), transparent 70%);
+  color: var(--brand-800);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.guia h3 {
+  margin-top: 1.6rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink-800);
+}
+
+/* Cartões numerados dos passos */
+.guia > ol {
+  counter-reset: passo;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guia > ol > li {
+  counter-increment: passo;
+  position: relative;
+  padding: 1rem 1.15rem 1.05rem 4.1rem;
+  border: 2px solid var(--brand-200);
+  border-radius: var(--raio);
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(15 23 42 / 0.05);
+}
+
+.guia > ol > li::before {
+  content: counter(passo);
+  position: absolute;
+  top: 1rem;
+  left: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 999px;
+  background: var(--brand-600);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Listas comuns (itens de "SE DER PROBLEMA") */
+.guia > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 1.1rem 0 0;
+  padding-left: 1.4rem;
+}
+
+.guia > ul > li::marker {
+  color: var(--brand-600);
+  font-weight: 700;
+}
+
+/* Listas aninhadas mantêm o estilo normal */
+.guia ol ol,
+.guia ul ul,
+.guia ol ul,
+.guia ul ol {
+  display: block;
+  margin-top: 0.7rem;
+  padding-left: 1.5rem;
+  list-style: revert;
+}
+
+.guia ol ol > li {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.guia ol ol > li::before {
+  content: none;
+}
+
+.guia code {
+  padding: 0.15em 0.45em;
+  border: 1px solid var(--ink-200);
+  border-radius: 0.45rem;
+  background: var(--ink-100);
+  color: var(--brand-900);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 0.95em;
+  word-break: break-all;
+}
+
+.guia a {
+  color: var(--brand-700);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.guia a:hover {
+  color: var(--brand-900);
+}
+
+.guia blockquote {
+  padding: 0.9rem 1.1rem;
+  border-left: 5px solid #d97706;
+  border-radius: 0 var(--raio-p) var(--raio-p) 0;
+  background: var(--warn-50);
+  color: var(--warn-700);
+  font-weight: 500;
+}
+
+.guia pre {
+  padding: 1rem;
+  border-radius: 0.9rem;
+  background: var(--ink-900);
+  color: var(--ink-50);
+  overflow-x: auto;
+}
+
+.guia pre code {
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+.guia hr {
+  margin: 1.8rem 0;
+  border: none;
+  border-top: 2px solid var(--ink-200);
+}
+
+.guia table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95em;
+}
+
+.guia th,
+.guia td {
+  padding: 0.6rem 0.75rem;
+  border: 2px solid var(--ink-200);
+  text-align: left;
+}
+
+.guia th {
+  background: var(--ink-100);
+  font-weight: 700;
+}
+
+/* ---------- 8. Aviso de erro ---------- */
+
+.erro-caixa {
+  flex-shrink: 0;
+  padding: 0 1rem 0.5rem;
+}
+
+.erro {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 2px solid var(--danger-100);
+  border-radius: var(--raio);
+  background: var(--danger-50);
+  color: var(--danger-700);
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.erro svg {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.erro p {
+  margin: 0;
+}
+
+.erro p + p {
+  margin-top: 0.25rem;
+  font-size: 1rem;
+}
+
+/* ---------- 9. Rodapé e campo de escrita ---------- */
+
+.rodape {
+  flex-shrink: 0;
+  background: #fff;
+  border-top: var(--borda);
+}
+
+.rodape__conteudo {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+}
+
+.formulario {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.campo {
+  flex: 1;
+  min-height: 3.5rem;
+  max-height: 12rem;
+  padding: 0.85rem 1rem;
+  border: var(--borda);
+  border-radius: var(--raio);
+  background: #fff;
+  color: var(--ink-900);
+  font: inherit;
+  font-size: 1.125rem;
+  line-height: 1.45;
+  resize: none;
+  overflow-y: auto;
+}
+
+.campo::placeholder {
+  color: var(--ink-400);
+}
+
+.campo:focus {
+  border-color: var(--brand-500);
+}
+
+.rodape__aviso {
+  margin: 0.5rem 0 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--ink-500);
+}
+
+/* ---------- 10. Impressão ---------- */
+
+@media print {
+  :root {
+    --escala: 1;
+    --fonte-base: 12pt;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .oculto-na-impressao {
+    display: none !important;
+  }
+
+  .pagina {
+    display: block;
+    height: auto;
+  }
+
+  .conversa {
+    overflow: visible;
+  }
+
+  .conversa__conteudo {
+    padding: 0;
+  }
+
+  .bolha-assistente {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  .guia > ol > li {
+    border-color: #999;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .guia h2 {
+    border-left-color: #333;
+    background: none;
+    break-after: avoid;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
