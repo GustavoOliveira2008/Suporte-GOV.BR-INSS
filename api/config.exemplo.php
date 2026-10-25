@@ -12,10 +12,10 @@
  */
 
 return [
-    'chave'  => 'COLE_SUA_CHAVE_AQUI',
+    'chave'  => 'AQ.Ab8RN6IEiJc59_FWSado21SX2re99weaebMe0ULdT1qHPH7QNg',
 
     // Modelo usado. Confira os nomes disponíveis em https://docs.x.ai
-    'modelo' => 'grok-4.7',
+    'modelo' => 'Gemini',
 
     // Consulta a internet durante a resposta.
     'busca'  => true,
